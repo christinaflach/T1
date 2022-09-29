@@ -11,4 +11,4 @@ jobs:
     needs: compile
     runs-on: ubuntu-latest
     steps:
-      - run: ./run.sh 
+      - run: ./run.sh ./exemplos/test-program-simple.cm saida.out
