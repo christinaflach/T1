@@ -6,7 +6,7 @@ run:
 	bison -d lexer.y
 	flex lexer.l
 	cc -o lexer lex.yy.c lexer.tab.c
-	./lexer < test-program-simple.cm >> out.txt
+	./lexer < test-program-simple.cm > out.txt
 
 test:
 	diff out.txt test.txt || exit 1
