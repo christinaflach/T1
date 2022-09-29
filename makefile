@@ -9,10 +9,10 @@ run:
 	./lexer test-program-simple.cm out.txt
 
 test:
-	diff out.txt test.txt || exit 1
+	diff out.txt test.txt 
 
 all:
 	make install
 	make run
 	make test
-  
+
