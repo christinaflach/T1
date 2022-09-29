@@ -1,14 +1,26 @@
-
-name: cminus
+name: cminus 
 run-name: ${{ github.actor }} is compiling C-
-on: [push]
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: 
+      - '*'         # matches every branch that doesn't contain a '/'
+      - '*/*'       # matches every branch containing a single '/'
+      - '**'        # matches every branch
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
 jobs:
-  compile:
-    runs-on: ubuntu-latest
-    steps:
-      - run: ./compile.sh
   test:
-    needs: compile
     runs-on: ubuntu-latest
     steps:
-      - run: ./run.sh test-program-simple.cm saida.out
+    - uses: actions/checkout@v3
+    - name: install
+      run: make install
+    - name: compile files
+      run: make run
+    - name: test
+      run: make test

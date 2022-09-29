@@ -3,10 +3,10 @@ install:
 	sudo apt-get install bison
 
 run: 
-	bison -d e1.y
-	flex e1.l
-	cc -o e1 lex.yy.c e1.tab.c
-	./e1 < exemplo.e1 >> out.txt
+	bison -d lexer.y
+	flex lexer.l
+	cc -o lexer lex.yy.c lexer.tab.c
+	./lexer < test-program-simple.cm >> out.txt
 
 test:
 	diff out.txt test.txt || exit 1
