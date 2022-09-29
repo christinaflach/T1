@@ -14,10 +14,11 @@ typedef enum {
 %}
 
 %%
-
-
-
-
+[0-9]+  { return NUM; }
+";"     { return SYM; }
+"+"     { return SYM; }
+[ \t\n] { } 
+.       { return ERROR; }
 
 %%
 
